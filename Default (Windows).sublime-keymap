@@ -6,5 +6,9 @@
     {
 		"keys": ["alt+s"],
 		"command": "sourcegraph_search"
+	},
+	{
+		"keys": ["alt+c"]
+		"command": ["sourcegraph_copy"]
 	}
 ]

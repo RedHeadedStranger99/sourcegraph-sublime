@@ -6,5 +6,9 @@
     {
 		"keys": ["option+s"],
 		"command": "sourcegraph_search"
+	},
+	{
+		"keys": ["option+c"]
+		"command": ["sourcegraph_copy"]
 	}
 ]

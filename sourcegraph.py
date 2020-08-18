@@ -14,7 +14,7 @@ if platform.system() == 'Windows':
     startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
     startupinfo.wShowWindow = subprocess.SW_HIDE
 
-VERSION = 'v1.0.7'
+VERSION = 'v1.0.8'
 FILENAME_SETTINGS = 'Sourcegraph.sublime-settings'
 
 # gitRemotes returns the names of all git remotes, e.g. ['origin', 'foobar']
@@ -125,6 +125,42 @@ class SourcegraphSearchCommand(sublime_plugin.TextCommand):
 			'search': query,
 		})
 		webbrowserOpen(url)
+
+class SourcegraphCopyCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		remoteURL, branch, fileRel = repoInfo(self.view.file_name())
+		if remoteURL == "":
+			return
+
+		# For now, we assume the first selection is the most interesting one.
+		(row,col) = self.view.rowcol(self.view.sel()[0].begin())
+		(row2,col2) = self.view.rowcol(self.view.sel()[0].end())
+
+		# Open in browser
+		settings = sublime.load_settings(FILENAME_SETTINGS)
+		url = sourcegraphURL(settings)+'-/editor?' + urlencode({
+			'remote_url': remoteURL,
+			'branch': branch,
+			'file': fileRel,
+			'editor': 'Sublime',
+			'version': VERSION,
+
+			'start_row': row,
+			'start_col': col,
+			'end_row': row2,
+			'end_col': col2,
+		})
+		subprocess.run("pbcopy", universal_newlines=True, input=url)
+
+class SourcegraphEditCommand(sublime_plugin.WindowCommand):
+	def run(self, edit):
+		url = self.window.show_input_panel('Sourcegraph Link: ', '', self.copy, None, None)
+		if self.copy == '':
+			return 'No link provided.'
+		
+	
+	
+
 
 def webbrowserOpen(url):
 	if sys.platform == 'darwin':

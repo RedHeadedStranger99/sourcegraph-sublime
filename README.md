@@ -20,7 +20,7 @@ Keyboard Shortcuts:
 |---------------------------------|---------------------|------------------|
 | Open file in Sourcegraph        | <kbd>Option+A</kbd> | <kbd>Alt+A</kbd> |
 | Search selection in Sourcegraph | <kbd>Option+S</kbd> | <kbd>Alt+S</kbd> |
-
+| Copy link from Sourcegraph      | <kbd>Option+C</kbd> | <kbd>Alt+C</kbd> |
 
 ## Settings
 
@@ -69,6 +69,9 @@ To develop the plugin:
 
 
 ## Version History
+
+- v1.0.8 - Add copy functionality.
+    - Create shortcut which copies a the file from a given Sourcegraph link. 
 
 - v1.0.7 - Correctly open the default browser on Mac OS.
     - Added a workaround for a Mac OS bug that causes Python to incorrectly open the second (non-default) browser. https://bugs.python.org/issue30392

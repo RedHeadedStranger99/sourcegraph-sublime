@@ -18,10 +18,14 @@ Usage
   |---------------------------------|------------|-----------------|
   | Open file in Sourcegraph        | `Option+A` | `Alt+A`         |
   | Search selection in Sourcegraph | `Option+S` | `Alt+S`         |
+  | Copy link from Sourcegraph      | `Option+C` | `Alt+C`         | 
 
 Version History
 ===============
 
+  - v1.0.8 - Add copy functionality.
+    - Create shortcut which copies a the file from a given Sourcegraph link. 
+    
   v1.0.7 - Correctly open the default browser on Mac OS.
     - Added a workaround for a Mac OS bug that causes Python to incorrectly open the second (non-default) browser. https://bugs.python.org/issue30392
 

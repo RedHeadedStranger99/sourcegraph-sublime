@@ -35,4 +35,8 @@
 		"caption": "Sourcegraph: Search",
 		"command": "sourcegraph_search"
 	}
+	{
+		"caption": "Sourcegraph: Copy",
+		"command": "sourcegraph_copy"
+	}
 ]
